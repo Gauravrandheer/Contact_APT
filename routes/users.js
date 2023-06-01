@@ -37,4 +37,24 @@ router.post("/adddata", (req, res) => {
   }
 });
 
+router.delete("/deletdata", async(req, res) => {
+  try {
+    const {_id} = req.body;
+    const delteUSer = await User.findByIdAndDelete(_id)
+
+    if(!delteUSer){
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.json({
+      message: "User deleted successfully",
+    });
+  } catch (error) {
+    console.error("Error occurred while adding data:", error);
+    res.status(500).json({
+      success: false,
+      message: "An error occurred while adding data",
+    });
+  }
+});
+
 module.exports = router;

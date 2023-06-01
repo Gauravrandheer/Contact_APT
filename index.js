@@ -9,7 +9,7 @@ app.use(express.json());
 
 app.use("/", useRouter);
 
-app.use("/", useRouter);
+// app.use("/", useRouter);
 
 // Start the server
 const port = 5000;
